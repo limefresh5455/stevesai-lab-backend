@@ -11,10 +11,16 @@ app = FastAPI(
     docs_url="/api/v1/docs"
 )
 
+cors_origins = [
+    origin.strip().rstrip("/")
+    for origin in settings.CORS_ALLOWED_ORIGINS.split(",")
+    if origin.strip()
+]
+
 # Set up CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.CORS_ALLOWED_ORIGINS],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
