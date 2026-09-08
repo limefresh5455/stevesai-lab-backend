@@ -9022,6 +9022,134 @@
           ]
         }
       }
+    },
+    {
+      "slug": "footer",
+      "title": "Footer",
+      "status": "published",
+      "content": {
+        "pageName": "Footer Settings",
+        "testLabel": "Footer Configuration Preview",
+        "companyInfo": {
+          "logoUrl": "/images/Steves-offical-logo-1.png",
+          "description": "A custom software development company engineers enterprise-grade AI systems and high-performance software designed for scalability. No templates. No shortcuts. Execution that demands precision."
+        },
+        "socialLinks": [
+          {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/company/steves-ai/",
+            "iconText": "in"
+          },
+          {
+            "label": "Instagram",
+            "href": "https://www.instagram.com/stevesailab/",
+            "iconText": "◎"
+          },
+          {
+            "label": "Facebook",
+            "href": "https://www.facebook.com/stevesailabs",
+            "iconText": "f"
+          },
+          {
+            "label": "YouTube",
+            "href": "https://www.youtube.com/@Steves_Ai_Lab",
+            "iconText": "▶"
+          },
+          {
+            "label": "Clutch",
+            "href": "https://clutch.co/profile/steves-ai-lab",
+            "iconText": "C"
+          }
+        ],
+        "columnTitles": {
+          "company": "Company",
+          "services": "Services",
+          "legal": "Legal",
+          "location": "Location"
+        },
+        "companyLinks": [
+          { "label": "Home", "href": "/" },
+          { "label": "About Us", "href": "/about-us/" },
+          { "label": "Services", "href": "/service/" },
+          { "label": "Blog", "href": "/blog/" },
+          { "label": "Case Studies", "href": "/case-studies/" },
+          { "label": "Contact Us", "href": "/contact-us/" }
+        ],
+        "serviceLinks": [
+          {
+            "label": "AI & Machine Learning",
+            "href": "/services/ai-machine-learning/"
+          },
+          { "label": "LLM Services", "href": "/services/llm-services/" },
+          { "label": "Generative AI", "href": "/services/generative-ai/" },
+          {
+            "label": "Foundation Models",
+            "href": "/services/foundation-models/"
+          },
+          {
+            "label": "Application Development",
+            "href": "/services/application-development/"
+          },
+          { "label": "Cloud Services", "href": "/services/cloud-services/" }
+        ],
+        "legalLinks": [
+          { "label": "Privacy Policy", "href": "/privacy-policy/" },
+          { "label": "Terms & Conditions", "href": "/terms-conditions/" }
+        ],
+        "location": {
+          "address": "1, Mhow Naka Square, Annapurna Rd, Titan Showroom Indore, M.P 452009",
+          "email": "info@stevesailab.com",
+          "phone": "+91 9179626073",
+          "phoneHref": "tel:9179626073"
+        },
+        "bottomText": {
+          "copyright": "© 2026 Steves AI Lab. All rights reserved.",
+          "subtitle": "Engineered with excellence for scalable enterprise AI solutions."
+        },
+        "whatsapp": {
+          "href": "https://wa.me/9179626073",
+          "label": "Chat on WhatsApp"
+        }
+      }
+    },
+    {
+      "slug": "header",
+      "title": "Header",
+      "status": "published",
+      "content": {
+        "pageName": "Header Settings",
+        "testLabel": "Header Configuration Preview",
+        "logo": {
+          "src": "/images/Steves-offical-logo-1.png",
+          "alt": "Steves AI Lab Logo"
+        },
+        "navLinks": [
+          {
+            "label": "Home",
+            "href": "/"
+          },
+          {
+            "label": "About Us",
+            "href": "/about-us"
+          },
+          {
+            "label": "Service",
+            "href": "/service"
+          },
+          {
+            "label": "Blog",
+            "href": "/blog"
+          },
+          {
+            "label": "Contact Us",
+            "href": "/contact-us"
+          }
+        ],
+        "callToAction": {
+          "label": "Book A Call",
+          "href": "/contact-us"
+        }
+      }
     }
   ],
   "homePageData": {

@@ -11,7 +11,11 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
     FRONTEND_URL: str = "http://localhost:3000"
     CORS_ALLOWED_ORIGINS: str = "http://localhost:3000"
-
+    SMTP_HOST: str = ""
+    SMTP_PORT: int = 587
+    SMTP_USER: str = ""
+    SMTP_PASSWORD: str = ""
+    CONTACT_EMAIL_TO: str = "admin@example.com"
     class Config:
         env_file = ".env"
 

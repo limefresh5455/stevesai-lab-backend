@@ -357,3 +357,21 @@ def get_admin_page_by_slug(slug: str, db: Client = Depends(get_db)):
     if not res.data:
         raise HTTPException(status_code=404, detail="Page not found")
     return res.data[0]
+
+
+# --- FOOTER ---
+@router.get("/footer")
+def get_footer(db: Client = Depends(get_db)):
+    res = db.table("pages").select("*").eq("slug", "footer").eq("status", "published").execute()
+    if not res.data:
+        raise HTTPException(status_code=404, detail="Footer not found")
+    return res.data[0]
+
+
+# --- HEADER ---
+@router.get("/header")
+def get_header(db: Client = Depends(get_db)):
+    res = db.table("pages").select("*").eq("slug", "header").eq("status", "published").execute()
+    if not res.data:
+        raise HTTPException(status_code=404, detail="Header not found")
+    return res.data[0]
