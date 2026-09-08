@@ -9,8 +9,16 @@ class Settings(BaseSettings):
     ADMIN_INITIAL_PASSWORD: str = "password"
     JWT_SECRET_KEY: str = "secret"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
-    FRONTEND_URL: str = "http://localhost:3000"
-    CORS_ALLOWED_ORIGINS: str = "http://localhost:3000"
+    FRONTEND_URL:list = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "https://your-project-name.vercel.app",
+    ],
+    CORS_ALLOWED_ORIGINS: list = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "https://your-project-name.vercel.app",
+    ],
     SMTP_HOST: str = ""
     SMTP_PORT: int = 587
     SMTP_USER: str = ""
