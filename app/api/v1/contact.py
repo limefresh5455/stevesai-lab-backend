@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from supabase import Client
 from app.database import get_db
+from app.api.v1.auth import get_admin_from_cookie
 from app.schemas.contact import ContactSubmissionCreate
 from app.core.config import settings
 import smtplib
@@ -65,7 +66,7 @@ def submit_contact(
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/contact")
-def get_contacts(db: Client = Depends(get_db)):
+def get_contacts(db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     try:
         response = db.table("contact_submissions").select("*").order("created_at", desc=True).execute()
         return response.data
@@ -73,7 +74,7 @@ def get_contacts(db: Client = Depends(get_db)):
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.delete("/admin/contact-submissions/{submission_id}")
-def delete_contact(submission_id: int, db: Client = Depends(get_db)):
+def delete_contact(submission_id: int, db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     try:
         response = db.table("contact_submissions").delete().eq("id", submission_id).execute()
         if not response.data:

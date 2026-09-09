@@ -102,7 +102,7 @@ def delete_blog(id: str, db: Client = Depends(get_db), admin: dict = Depends(get
 
 # --- SERVICES ---
 @router.get("/admin/services", response_model=List[ServiceOut])
-def list_admin_services(db: Client = Depends(get_db)):
+def list_admin_services(db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     res = db.table("services").select("*").order("id").execute()
     return res.data
 
@@ -169,7 +169,7 @@ def delete_service(id: str, db: Client = Depends(get_db), admin: dict = Depends(
 
 # --- CASE STUDIES ---
 @router.get("/admin/case-studies", response_model=List[CaseStudyOut])
-def list_admin_case_studies(db: Client = Depends(get_db)):
+def list_admin_case_studies(db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     res = db.table("case_studies").select("*").order("id").execute()
     return res.data
 
@@ -235,7 +235,7 @@ def delete_case_study(id: str, db: Client = Depends(get_db), admin: dict = Depen
     return {"message": "Case Study deleted"}
 
 @router.get("/admin/case-studies/{identifier}", response_model=CaseStudyOut)
-def get_admin_case_study(identifier: str, db: Client = Depends(get_db)):
+def get_admin_case_study(identifier: str, db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     try:
         uuid.UUID(identifier)
         res = db.table("case_studies").select("*").eq("id", identifier).execute()
@@ -247,7 +247,7 @@ def get_admin_case_study(identifier: str, db: Client = Depends(get_db)):
     return res.data[0]
 
 @router.get("/admin/services/{identifier}", response_model=ServiceOut)
-def get_admin_service(identifier: str, db: Client = Depends(get_db)):
+def get_admin_service(identifier: str, db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     try:
         uuid.UUID(identifier)
         res = db.table("services").select("*").eq("id", identifier).execute()
@@ -258,7 +258,7 @@ def get_admin_service(identifier: str, db: Client = Depends(get_db)):
     return res.data[0]
 
 @router.get("/admin/blogs/{identifier}", response_model=BlogOut)
-def get_admin_blog(identifier: str, db: Client = Depends(get_db)):
+def get_admin_blog(identifier: str, db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     try:
         uuid.UUID(identifier)
         res = db.table("blog_posts").select("*").eq("id", identifier).execute()
@@ -269,7 +269,7 @@ def get_admin_blog(identifier: str, db: Client = Depends(get_db)):
     return res.data[0]
 
 @router.get("/admin/blogs", response_model=List[BlogOut])
-def list_admin_blogs(db: Client = Depends(get_db)):
+def list_admin_blogs(db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     res = db.table("blog_posts").select("*").order("id", desc=True).execute()
     return res.data
 
@@ -277,7 +277,7 @@ def list_admin_blogs(db: Client = Depends(get_db)):
 from app.schemas.content import PageOut, PageCreate, PageUpdate
 
 @router.get("/admin/pages", response_model=List[PageOut])
-def list_admin_pages(db: Client = Depends(get_db)):
+def list_admin_pages(db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     res = db.table("pages").select("*").order("id", desc=True).execute()
     return res.data
 
@@ -289,7 +289,7 @@ def get_page_public(slug: str, db: Client = Depends(get_db)):
     return res.data[0]
 
 @router.get("/admin/pages/{id}", response_model=PageOut)
-def get_admin_page(id: str, db: Client = Depends(get_db)):
+def get_admin_page(id: str, db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     try:
         uuid.UUID(id)
         res = db.table("pages").select("*").eq("id", id).execute()
@@ -352,7 +352,7 @@ def delete_page(id: str, db: Client = Depends(get_db), admin: dict = Depends(get
     return {"message": "Page deleted"}
 
 @router.get("/admin/pages/slug/{slug}", response_model=PageOut)
-def get_admin_page_by_slug(slug: str, db: Client = Depends(get_db)):
+def get_admin_page_by_slug(slug: str, db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     res = db.table("pages").select("*").eq("slug", slug).execute()
     if not res.data:
         raise HTTPException(status_code=404, detail="Page not found")

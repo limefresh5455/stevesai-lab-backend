@@ -58,6 +58,6 @@ async def upload_file(
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/admin/media")
-def list_media(db: Client = Depends(get_db)):
+def list_media(db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     res = db.table("media").select("*").order("created_at", desc=True).execute()
     return res.data
