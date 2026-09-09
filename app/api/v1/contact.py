@@ -65,7 +65,7 @@ def submit_contact(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/contact")
+@router.get("/admin/contact")
 def get_contacts(db: Client = Depends(get_db), admin: dict = Depends(get_admin_from_cookie)):
     try:
         response = db.table("contact_submissions").select("*").order("created_at", desc=True).execute()
